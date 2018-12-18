@@ -41,16 +41,18 @@ class App extends Component {
     this.state = {
       num: 0
     }
+    this.myRef = React.createRef()
   }
   componentDidMount () {
     document.getElementById("nohook").innerHTML = this.state.num
   }
   componentDidUpdate () {
+    console.log(this.myRef.current)
     document.getElementById("nohook").innerHTML = this.state.num
   }
   render() {
     return (
-      <div className="App">
+      <div className="App" ref={this.myRef}>
         <div>hook</div>
         <Example/>
         <div>nohook</div>
