@@ -1,5 +1,6 @@
 import React, { Component, useState, useEffect, useRef } from 'react';
 import './App.css';
+import CustomTextInput from './Input';
 
 function Example () {
   const [count, setCount] = useState(0);
@@ -47,12 +48,13 @@ class App extends Component {
     document.getElementById("nohook").innerHTML = this.state.num
   }
   componentDidUpdate () {
-    console.log(this.myRef.current)
+    //console.log(this.myRef.current)
     document.getElementById("nohook").innerHTML = this.state.num
   }
   render() {
     return (
       <div className="App" ref={this.myRef}>
+        <CustomTextInput/>
         <div>hook</div>
         <Example/>
         <div>nohook</div>

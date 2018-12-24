@@ -25,6 +25,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "flow-bin": "^0.89.0"
+    "flow-bin": "^0.89.0",
+    "uglify-js-brunch": "^2.10.0"
   }
 }
