@@ -26,16 +26,16 @@ function usePrevious(value) {
   });
   return ref.current;
 }
-function useReducer(reducer, initialState) {
-  const [state, setState] = useState(initialState);
+// function useReducer(reducer, initialState) {
+//   const [state, setState] = useState(initialState);
 
-  function dispatch(action) {
-    const nextState = reducer(state, action);
-    setState(nextState);
-  }
+//   function dispatch(action) {
+//     const nextState = reducer(state, action);
+//     setState(nextState);
+//   }
 
-  return [state, dispatch];
-}
+//   return [state, dispatch];
+// }
 class App extends Component {
   constructor(props) {
     super(props)
@@ -48,7 +48,7 @@ class App extends Component {
     document.getElementById("nohook").innerHTML = this.state.num
   }
   componentDidUpdate () {
-    //console.log(this.myRef.current)
+    console.log(this.myRef.current)
     document.getElementById("nohook").innerHTML = this.state.num
   }
   render() {
