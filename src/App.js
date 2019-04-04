@@ -1,7 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import './App.css';
-import Index from './views/index/index'
+import Index from './views/index/index';
+import GuJia from './views/gujia/index';
 
 function BasicExample() {
   return (
@@ -20,6 +21,9 @@ function BasicExample() {
           <li>
           <Link to="/index">Index</Link>
           </li>
+          <li>
+          <Link to="/gujia">gujia</Link>
+          </li>
         </ul>
 
         <hr />
@@ -28,6 +32,7 @@ function BasicExample() {
         <Route path="/about" component={About} />
         <Route path="/topics" component={Topics} />
         <Route path="/index" component={Index} />
+        <Route path="/gujia" component={GuJia} />
       </div>
     </Router>
   );
