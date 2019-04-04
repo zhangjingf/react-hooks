@@ -1,68 +1,86 @@
-import React, { Component, useState, useEffect, useRef } from 'react';
+import React from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import './App.css';
-import CustomTextInput from './Input';
+import Index from './views/index/index'
 
-function Example () {
-  const [count, setCount] = useState(0);
-  //const prevCountRef = useRef();
-  useEffect(() => {
-    //prevCountRef.current = count
-    document.title = `You clicked ${count} times`;
-  })
-  //const prevCount = prevCountRef.current;
-  const prevCount = usePrevious(count);
+function BasicExample() {
+  return (
+    <Router>
+      <div>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/topics">Topics</Link>
+          </li>
+          <li>
+          <Link to="/index">Index</Link>
+          </li>
+        </ul>
+
+        <hr />
+
+        <Route exact path="/" component={Home} />
+        <Route path="/about" component={About} />
+        <Route path="/topics" component={Topics} />
+        <Route path="/index" component={Index} />
+      </div>
+    </Router>
+  );
+}
+
+function Home() {
   return (
     <div>
-      <p>You clicked {count} times</p>
-      <p>Now: {count}， Before : {prevCount}</p>
-      <button onClick={() => setCount(count + 1)}>Click me</button>
+      <h2>Home</h2>
     </div>
-  )
-}
-function usePrevious(value) {
-  const ref = useRef();
-  useEffect(() => {
-    ref.current = value;
-  });
-  return ref.current;
-}
-// function useReducer(reducer, initialState) {
-//   const [state, setState] = useState(initialState);
-
-//   function dispatch(action) {
-//     const nextState = reducer(state, action);
-//     setState(nextState);
-//   }
-
-//   return [state, dispatch];
-// }
-class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      num: 0
-    }
-    this.myRef = React.createRef()
-  }
-  componentDidMount () {
-    document.getElementById("nohook").innerHTML = this.state.num
-  }
-  componentDidUpdate () {
-    console.log(this.myRef.current)
-    document.getElementById("nohook").innerHTML = this.state.num
-  }
-  render() {
-    return (
-      <div className="App" ref={this.myRef}>
-        <CustomTextInput/>
-        <div>hook</div>
-        <Example/>
-        <div>nohook</div>
-        <div id="nohook"></div>
-        <button onClick={() => this.setState({num: this.state.num + 1})}>click me</button>
-      </div>
-    );
-  }
+  );
 }
 
-export default App;
+function About() {
+  return (
+    <div>
+      <h2>About</h2>
+    </div>
+  );
+}
+
+function Topics({ match }) {
+  return (
+    <div>
+      <h2>Topics</h2>
+      <ul>
+        <li>
+          <Link to={`${match.url}/rendering`}>Rendering with React</Link>
+        </li>
+        <li>
+          <Link to={`${match.url}/components`}>Components</Link>
+        </li>
+        <li>
+          <Link to={`${match.url}/props-v-state`}>Props v. State</Link>
+        </li>
+      </ul>
+
+      <Route path={`${match.path}/:topicId`} component={Topic} />
+      <Route
+        exact
+        path={match.path}
+        render={() => <h3>Please select a topic.</h3>}
+      />
+    </div>
+  );
+}
+
+function Topic({ match }) {
+  return (
+    <div>
+      <h3>{match.params.topicId}</h3>
+    </div>
+  );
+}
+
+export default BasicExample;
