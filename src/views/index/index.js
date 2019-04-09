@@ -1,5 +1,5 @@
 import React, { Component, useState, useEffect, useRef } from 'react';
-import CustomTextInput from '../../Input';
+import CustomTextInput from './Input'
 import { Button } from 'antd';
 
 function Example () {
