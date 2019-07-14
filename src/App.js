@@ -11,6 +11,7 @@ function App() {
           <li><Link to="/">index</Link></li>
           <li><Link to="/topics">Topics</Link></li>
           <li><Link to="/gujia">gujia</Link></li>
+          <li><Link to="/shop">shop</Link></li>
         </ul>
 
         <hr />
