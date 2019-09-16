@@ -12,8 +12,8 @@ function App() {
           <li><Link to="/topics">Topics</Link></li>
           <li><Link to="/gujia">gujia</Link></li>
           <li><Link to="/shop">shop</Link></li>
-        </ul>
-
+          <li><Link to="/content">content</Link></li>
+       </ul>
         <hr />
         {routes.map((route, index) => (
           <Route

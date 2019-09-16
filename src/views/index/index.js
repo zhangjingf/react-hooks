@@ -1,5 +1,6 @@
 import React, { Component, useState, useEffect, useRef } from 'react';
 import CustomTextInput from './Input'
+import {List} from './list'
 import { Button } from 'antd';
 
 function Example () {
@@ -48,20 +49,19 @@ class App extends Component {
   componentDidMount () {
     document.getElementById("nohook").innerHTML = this.state.num
     //isBatchingUpdates  为true
-    this.setState({val: this.state.val + 1})
-    console.log('1', this.state.val)
-    this.setState({val: this.state.val + 1})
-    console.log('2', this.state.val)
+    // this.setState({val: this.state.val + 1})
+    // console.log('1', this.state.val)
+    // this.setState({val: this.state.val + 1})
+    // console.log('2', this.state.val)
     setTimeout(() => {
       //isBatchingUpdates  为false
-      this.setState({val: this.state.val + 1})
+      // this.setState({val: this.state.val + 1})
       console.log('3', this.state.val)
       this.setState({val: this.state.val + 1})
       console.log('4', this.state.val)
     }, 2000)
   }
   componentDidUpdate () {
-    console.log(this.myRef.current)
     document.getElementById("nohook").innerHTML = this.state.num
   }
   render() {
@@ -73,6 +73,7 @@ class App extends Component {
         <div>nohook</div>
         <div id="nohook"></div>
         <Button type="primary" onClick={() => this.setState({num: this.state.num + 1})}>click me</Button>
+        <List />
       </div>
     );
   }

@@ -8,7 +8,7 @@ import todoApp from './reducers';
 import * as serviceWorker from './serviceWorker';
 
 let store = createStore(todoApp)
-
+document.title = '张景锋';
 ReactDOM.render(<Provider store={store}>
     <App />
   </Provider>, document.getElementById('root'));
