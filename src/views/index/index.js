@@ -1,6 +1,5 @@
 import React, { Component, useState, useEffect, useRef } from 'react';
 import CustomTextInput from './Input'
-import {List} from './list'
 import { Button } from 'antd';
 
 function Example () {
@@ -45,6 +44,10 @@ class App extends Component {
       val: 0
     }
     this.myRef = React.createRef()
+    console.log(this.myRef);
+  }
+  UNSAFE_componentWillMount() {
+    console.log(1321241);
   }
   componentDidMount () {
     document.getElementById("nohook").innerHTML = this.state.num
@@ -72,8 +75,7 @@ class App extends Component {
         <Example/>
         <div>nohook</div>
         <div id="nohook"></div>
-        <Button type="primary" onClick={() => this.setState({num: this.state.num + 1})}>click me</Button>
-        <List />
+        <Button type="primary" onClick={() => this.setState({num: this.state.num + 1})} style={{marginTop: '10px',}}>click me</Button>
       </div>
     );
   }
